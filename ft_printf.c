@@ -6,36 +6,32 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 14:21:57 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/16 18:24:50 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:50:50 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_check_sign(char c, va_list *args, int *len)
+int	ft_check_sign(char c, va_list args, int len)
 {
 	if (c == 'c')
-
-
+		len += ft_putchar(va_arg(args, int));
+	else if (c == 's')
+		len += ft_print_string(va_arg(args, char *));
+	else if (c == 'i' || c == 'd')
+		len += ft_print_integer(va_arg(args, int));
+	else if (c == 'u')
+		len += ft_print_unsigned(va_arg(args, unsigned int));
+	else if (c == '%')
+		len += ft_putchar(va_arg(args, int));
+	else if (c == 'p')
+		len += ft_void_pointer(va_arg(args, void *));
+	else if (c == 'x' || c == 'X')
+		len += ft_num_in_hex(va_arg(args, int), c);
+	return (len);
 }
 
-char	*ft_strchr(const char *str, int c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == (char)c)
-			return ((char *)str + i);
-		i++;
-	}
-	if (str[i] == (char)c)
-		return ((char *)str + i);
-	return (0);
-}
-
-int	print_loop(const char *format, va_list *args, int num_args)
+int	print_loop(const char *format, va_list args)
 {
 	int		i;
 	int		len;
@@ -47,54 +43,27 @@ int	print_loop(const char *format, va_list *args, int num_args)
 		if (format[i] == 37)
 		{
 			i++;
-			ft_check_sign(format[i], &args, &i, &len);
+			len += ft_check_sign(format[i], args, len);
 			i++;
 		}
 		else
 		{
-			ft_putchar_len(format[i], &len);
+			len += ft_putchar_len(format[i]);
 			i++;
 		}
 	}
 	return (len);
-}
-
-int	get_arg_count(const char *format)
-{
-	int		i;
-	int		count;
-	char	*c;
-
-	i = 0;
-	count = 0;
-	c = "cspdiuxX";
-	while (format[i])
-	{
-		if (format[i] == 37)
-		{
-			if (ft_strchr(c, format[i + 1]) != NULL)
-				count++;
-			else if (format[i + 1] == 37)
-				count++;
-		}
-		i++;
-	}
-	if (count == 0)
-		return (0);
-	return (count);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int		num_args;
 	int		numb_of_ch;
 
-	num_args = get_arg_count(format);
-	va_start(args, num_args);
-	numb_of_ch = print_loop(format, args, num_args);
+	va_start(args, format);
+	numb_of_ch = print_loop(format, args);
 	va_end(args);
-	return (len);
+	return (numb_of_ch);
 }
 
 // #include <stdio.h>

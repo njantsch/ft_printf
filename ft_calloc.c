@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversions.c                                   :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/16 16:02:25 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/16 17:53:03 by njantsch         ###   ########.fr       */
+/*   Created: 2023/03/16 11:35:46 by njantsch          #+#    #+#             */
+/*   Updated: 2023/04/17 19:55:23 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putchar_len(char character, int *len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	write(1, &character, 1);
-	(*len)++;
+	void	*ptr;
+
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, size * count);
+	return (ptr);
 }
