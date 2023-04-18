@@ -6,11 +6,11 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:16:11 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/17 19:55:40 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:13:00 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	get_len(int num)
 {

@@ -6,11 +6,11 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:30:19 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/17 19:55:31 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:12:51 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_bzero(void *s, size_t n)
 {

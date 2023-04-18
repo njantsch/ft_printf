@@ -6,13 +6,13 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:17:57 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/17 19:50:16 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:12:44 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-static int	num_len(int num)
+static int	num_len(unsigned int num)
 {
 	int	count;
 
@@ -27,7 +27,7 @@ static int	num_len(int num)
 	return (count);
 }
 
-int	ft_num_in_hex(int num, char c)
+int	ft_num_in_hex(unsigned int num, char c)
 {
 	if (num >= 16)
 	{

@@ -6,40 +6,19 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:49:10 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/17 17:28:29 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/18 20:26:10 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-
-int	get_num_len(unsigned int num)
-{
-	int	count;
-
-	count = 0;
-	while (num != 0)
-	{
-		num /= 10;
-		count++;
-	}
-	return (count);
-}
+#include "ft_printf.h"
 
 int	ft_print_unsigned(unsigned int num)
 {
-	int 	i;
-	char	*str;
+	unsigned int	i;
 
-	str = ft_calloc(get_num_len(num), sizeof(char));
-	if (str == NULL || get_num_len(num) == 0)
-		return (0);
-	i = get_num_len(num);
-	while (i-- > 0)
-	{
-		str[i] = (num % 10) + '0';
-		num /= 10;
-	}
-	i = ft_print_string(str);
-	free(str);
+	i = 1;
+	if (num >= 10)
+		i += ft_print_unsigned(num / 10);
+	ft_putchar(num % 10 + '0');
 	return (i);
 }
