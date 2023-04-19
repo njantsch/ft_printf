@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 14:28:53 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/18 19:12:56 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/19 21:01:23 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int		ft_printf(const char *format, ...);
 int		ft_putchar(int c);
 int		ft_print_string(char *str);
-int		ft_print_number(int num);
+int		ft_print_number(int n);
 int		ft_print_unsigned(unsigned int num);
 int		print_loop(const char *format, va_list args);
 int		ft_num_in_hex(unsigned int num, char c);

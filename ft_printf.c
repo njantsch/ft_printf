@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 14:21:57 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/18 20:20:54 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:49:28 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	print_loop(const char *format, va_list args)
 			len += ft_putchar(format[i]);
 			i++;
 		}
+		if (len == -1)
+			break ;
 	}
 	return (len);
 }
@@ -63,6 +65,8 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	int		numb_of_ch;
 
+	if (!format)
+		return (-1);
 	va_start(args, format);
 	numb_of_ch = print_loop(format, args);
 	va_end(args);
@@ -72,7 +76,13 @@ int	ft_printf(const char *format, ...)
 // #include <stdio.h>
 // int main(void)
 // {
-// 	ft_printf("%s%s%s\n", "And ", "some", "joined");
-// 	printf("%s%s%s\n", "And ", "some", "joined");
+// 	int i;
+// 	int j;
+
+// 	i = ft_printf("%d\n", -10);
+// 	printf("Implemented return: %d\n", i);
+// 	j = printf("%d\n", -10);
+// 	printf("Original return: %d\n", j);
+// 	system("leaks a.out");
 // 	return (0);
 // }

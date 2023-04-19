@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:41:17 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/18 20:29:46 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:26:00 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	ft_void_pointer(size_t ptr)
 	int	len;
 
 	len = 2;
-	write(1, "0x", 2);
+	if (write(1, "0x", 2) == -1)
+		return (-1);
 	if (ptr == 0)
 		len += ft_putchar('0');
 	else

@@ -6,24 +6,54 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:02:25 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/18 17:12:45 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/19 21:04:28 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_number(int num)
+static int	num_len(int n)
 {
-	int		i;
-	char	*str;
+	int	count;
 
-	i = 0;
-	str = ft_itoa(num);
-	while (str[i])
+	count = 0;
+	if (n == 0)
+		count += 1;
+	if (n < 0)
+		count += 1;
+	while (n != 0)
 	{
-		write(1, &str[i], 1);
-		i++;
+		n /= 10;
+		count += 1;
 	}
-	free(str);
-	return (i);
+	return (count);
+}
+
+static int	into_pos(int n)
+{
+	if (n < 0)
+		return (n * (-1));
+	else
+		return (n);
+}
+
+int	ft_print_number(int n)
+{
+	unsigned int	num;
+
+	if (n < 0)
+		if (ft_putchar('-') == -1)
+			return (-1);
+	num = into_pos(n);
+	if (num >= 10)
+	{
+		if (ft_print_number(num / 10) == -1)
+			return (-1);
+		if (ft_print_number(num % 10) == -1)
+			return (-1);
+	}
+	else
+		if (ft_putchar(num + '0') == -1)
+			return (-1);
+	return (num_len(n));
 }

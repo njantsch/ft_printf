@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:17:57 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/18 19:12:44 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:51:27 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,26 @@ int	ft_num_in_hex(unsigned int num, char c)
 {
 	if (num >= 16)
 	{
-		ft_num_in_hex(num / 16, c);
-		ft_num_in_hex(num % 16, c);
+		if (ft_num_in_hex(num / 16, c) == -1)
+			return (-1);
+		if (ft_num_in_hex(num % 16, c) == -1)
+			return (-1);
 	}
 	else
 	{
 		if (num < 10)
-			ft_putchar(num + '0');
+		{
+			if (ft_putchar(num + '0') == -1)
+				return (-1);
+		}
 		else
 		{
 			if (c == 'x')
-				ft_putchar(num - 10 + 'a');
+				if (ft_putchar(num - 10 + 'a') == -1)
+					return (-1);
 			if (c == 'X')
-				ft_putchar(num - 10 + 'A');
+				if (ft_putchar(num - 10 + 'A') == -1)
+					return (-1);
 		}
 	}
 	return (num_len(num));
