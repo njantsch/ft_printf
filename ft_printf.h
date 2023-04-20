@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 14:28:53 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/19 21:01:23 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:10:35 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,5 @@ int		print_loop(const char *format, va_list args);
 int		ft_num_in_hex(unsigned int num, char c);
 int		ft_check_sign(char c, va_list args);
 int		ft_void_pointer(size_t ptr);
-char	*ft_itoa(int n);
-void	*ft_calloc(size_t count, size_t size);
-void	ft_bzero(void *s, size_t n);
 
 #endif

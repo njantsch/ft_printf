@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 14:21:57 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/19 18:49:28 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/04/20 10:57:57 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int	ft_printf(const char *format, ...)
 // 	int i;
 // 	int j;
 
-// 	i = ft_printf("%d\n", -10);
+// 	i = ft_printf("%d\n", -2147483648);
 // 	printf("Implemented return: %d\n", i);
-// 	j = printf("%d\n", -10);
+// 	j = printf("%d\n", -2147483648);
 // 	printf("Original return: %d\n", j);
 // 	system("leaks a.out");
 // 	return (0);
